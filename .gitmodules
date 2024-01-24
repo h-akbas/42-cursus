@@ -1,0 +1,12 @@
+[submodule "phase0/Libft"]
+	path = phase0/Libft
+	url = git@vogsphere.42kocaeli.com.tr:vogsphere/intra-uuid-7c0b9b63-2ab3-4cd0-9bc1-b69b66d9e16e-5237714-hakbas
+[submodule "phase1/Born2beroot"]
+	path = phase1/Born2beroot
+	url = git@vogsphere.42kocaeli.com.tr:vogsphere/intra-uuid-b1c6094a-bd17-4d5b-a5b0-3ad09e9e85e0-5379787-hakbas
+[submodule "phase1/ft_printf"]
+	path = phase1/ft_printf
+	url = git@vogsphere.42kocaeli.com.tr:vogsphere/intra-uuid-dc9bd575-9b55-47b5-9346-ecd6e4c6aa39-5295630-hakbas
+[submodule "phase1/get_next_line"]
+	path = phase1/get_next_line
+	url = git@vogsphere.42kocaeli.com.tr:vogsphere/intra-uuid-c2333c49-c64c-4b7e-9c8d-e53ef0fd5838-5367006-hakbas
