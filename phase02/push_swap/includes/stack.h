@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:57:40 by hakbas            #+#    #+#             */
-/*   Updated: 2024/01/24 17:59:38 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/01/24 22:45:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,31 +54,32 @@ enum		e_ops
 
 /*DATA FUNCTIONS*/
 void		parse_data(t_data *data, int argc, char **argv, bool reporting);
-void		create_stack(t_data *data, t_stack stack, int size);
+//void		create_stack(t_data *data, t_stack stack, int size);
 bool		check_sorted(t_data *data);
 void		free_all(t_data *data);
 void		put_error(t_data *data);
 
 /*STACK FUNCTIONS*/
 void		fill_stack(t_data *data, t_stack *stack, int argc, char **argv);
+/*
 void		check_argv_validity(char *argv);
-void		check_duplicate(t_stack *stack);
-void		assign_rank(int *arr, int *rank, int size);
+void		check_duplicate(t_data *data, int *numbers, int size);
+void		assign_rank(int *arr, int *rank, int size); */
 
-int			get_next_index(t_stack *stack, int index);
-int			get_prev_index(t_stack *stack, int index);
-int			peek_value(t_stack *stack, int index);
+int			get_index_above(t_stack *stack, int index);
+int			get_index_below(t_stack *stack, int index);
+int			peek_value(t_stack *stack, int n);
 int			check_size(t_stack *stack);
-bool		is_empty(t_stack *stack);
+bool		is_full(t_stack *stack);
 
 /* OPERATION UTILS*/
 void		record_instruction(t_data *data, enum e_ops instruction);
 void		report_instructions(t_list *head);
-const char	*verbalize_instruction(enum e_ops instruction);
+//const char	*verbalize_instruction(enum e_ops op);
 enum e_ops	map_instructions(t_list *instruction_list);
 
 /* STACK OPERATIONS */
-void		push(t_stack *stack_from, t_stack *stack_to);
+void		push(t_stack *src, t_stack *dest);
 void		push_a(t_data *data);
 void		push_b(t_data *data);
 void		rotate(t_stack *stack);

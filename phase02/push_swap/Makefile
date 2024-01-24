@@ -8,12 +8,12 @@ NAME				=	$(PUSH_SWAP) $(CHECKER)
 
 # Libraries
 LIBFT				=	libft.a
-LIBFT_DIR			=	lib/libft
+LIBFT_DIR			=	libraries/libft
 LIBFT_FILE			=	$(LIBFT_DIR)/$(LIBFT)
 CFLAGS				+=	-I $(LIBFT_DIR)/include
 
 FT_PRINTF			=	ft_printf.a
-FT_PRINTF_DIR		=	lib/ft_printf
+FT_PRINTF_DIR		=	libraries/ft_printf
 FT_PRINTF_FILE		=	$(FT_PRINTF_DIR)/$(FT_PRINTF)
 CFLAGS				+=	-I $(FT_PRINTF_DIR)/include
 
