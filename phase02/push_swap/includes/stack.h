@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:57:40 by hakbas            #+#    #+#             */
-/*   Updated: 2024/01/24 17:59:38 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/01/24 19:23:22 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ enum		e_ops
 
 /*DATA FUNCTIONS*/
 void		parse_data(t_data *data, int argc, char **argv, bool reporting);
-void		create_stack(t_data *data, t_stack stack, int size);
+//void		create_stack(t_data *data, t_stack stack, int size);
 bool		check_sorted(t_data *data);
 void		free_all(t_data *data);
 void		put_error(t_data *data);
@@ -65,8 +65,8 @@ void		check_argv_validity(char *argv);
 void		check_duplicate(t_stack *stack);
 void		assign_rank(int *arr, int *rank, int size);
 
-int			get_next_index(t_stack *stack, int index);
-int			get_prev_index(t_stack *stack, int index);
+int			get_upper(t_stack *stack, int index);
+int			get_lower(t_stack *stack, int index);
 int			peek_value(t_stack *stack, int index);
 int			check_size(t_stack *stack);
 bool		is_empty(t_stack *stack);
