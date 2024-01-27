@@ -1,85 +1,72 @@
-NAME			=	push_swap
-NAME_B			=	checker
-LIBFT			=	libft.a libftprintf.a
-DIR_SRCS		=	srcs/mandatory
-DIR_BONUS		=	srcs/bonus
-DIR_OBJS		=	objs
-SRCS_NAMES		=	both_stack.c \
-					parsing.c \
-					push_swap.c \
-					stack_a.c \
-					stack_b.c \
-					list.c \
-					sorting.c \
-					utils.c \
-					free.c \
-					init.c \
-					sorting2.c
+# Variables
+CC					=	gcc
+CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -O3 -g3
+RM					=	rm -rf
+PUSH_SWAP			=	push_swap
+NAME				=	$(PUSH_SWAP)
 
-SRCS_NAMES_B	=	checker.c \
-					get_next_line_utils.c \
-					get_next_line.c \
-					both_stack_bonus.c \
-					parsing.c \
-					stack_a_bonus.c \
-					stack_b_bonus.c \
-					list.c \
-					utils_bonus.c \
-					free.c \
-					push_swap_bonus.c \
+# Libraries
+LIBFT				=	libft.a
+LIBFT_DIR			=	libraries/libft
+LIBFT_FILE			=	$(LIBFT_DIR)/$(LIBFT)
+CFLAGS				+=	-I $(LIBFT_DIR)/include
 
-OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
-OBJS_NAMES_B	=	${SRCS_NAMES_B:.c=.o}
-SRCS			=	$(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-SRCS_B			=	$(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
-OBJS			=	$(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
-OBJS_B			=	$(addprefix $(DIR_OBJS)/,$(OBJS_NAMES_B))
-HEAD			=	-Ilibft/includes -Iincludes
-CC				=	cc
-CFLAGS			=	-g3 -Wall -Werror -Wextra
-MAKEFLAGS		=	--no-print-directory
+FT_PRINTF			=	ft_printf.a
+FT_PRINTF_DIR		=	libraries/ft_printf
+FT_PRINTF_FILE		=	$(FT_PRINTF_DIR)/$(FT_PRINTF)
+CFLAGS				+=	-I $(FT_PRINTF_DIR)/include
 
-all: ${NAME}
+MAKE_LIB			=	make --no-print-directory -C
 
-${NAME}: $(OBJS)
-	@make -C libft
-	@make -C libft/ft_printf
-	@cp libft/ft_printf/libftprintf.a .
-	@cp libft/libft.a .
-	$(CC) $(CFLAGS) $(OBJS) ${LIBFT} ${HEAD} -o $(NAME)
-	@echo "\033[34;5mpush_swap mandatory\033[0m"
+# Source and Object Files
+VPATH				=	srcs:srcs/mandatory:
+PUSH_SWAP_INC		=	push_swap.h
+PUSH_SWAP_SRC		=	both_stack.c free.c init.c list.c  \
+						parsing.c push_swap.c sorting.c \
+						sorting2.c stack_a.c stack_b.c utils.c \
 
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
+# Rules
+all:				$(PUSH_SWAP)
 
-bonus: ${NAME_B}
+obj:
+					mkdir -p obj
 
-${NAME_B}: $(OBJS_B)
-	@make -C libft
-	@make -C libft/ft_printf
-	@cp libft/ft_printf/libftprintf.a .
-	@cp libft/libft.a .
-	$(CC) $(CFLAGS) $(OBJS_B) ${LIBFT} ${HEAD} -o $(NAME_B)
-	@echo "\033[39;5mpush_swap bonus\033[0m"
+LIB					=	$(LIBFT_FILE) $(FT_PRINTF_FILE)
+PUSH_SWAP_OBJ		=	$(PUSH_SWAP_SRC:%.c=obj/push_swap/%.o)
 
-$(DIR_OBJS)/%.o: $(DIR_BONUS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
+$(PUSH_SWAP_OBJ):	obj/push_swap/%.o: %.c $(PUSH_SWAP_INC)
+					@mkdir -p $(dir $@)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-$(DIR_OBJS):
-	mkdir -p $(DIR_OBJS)
+$(CHECKER_OBJ):		obj/checker/%.o: %.c $(CHECKER_INC)
+					@mkdir -p $(dir $@)
+					$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	@make clean -C libft
-	@make clean -C libft/ft_printf
-	@rm -rf ${DIR_OBJS}
+$(LIBFT_FILE):
+					$(MAKE_LIB) $(LIBFT_DIR)
+$(FT_PRINTF_FILE):
+					$(MAKE_LIB) $(FT_PRINTF_DIR)
 
-fclean:	clean
-	@make fclean -C libft
-	@make fclean -C libft/ft_printf
-	@rm -rf ${LIBFT}
-	@rm -rf ${NAME}
-	@rm -rf ${NAME_B}
+$(PUSH_SWAP):		$(LIB) $(PUSH_SWAP_OBJ)
+					$(CC) $(CFLAGS) $(LIB) $(PUSH_SWAP_OBJ) -o $@
 
-re:	fclean all
 
-.PHONY:	all clean fclean re bonus
+lib_clean:
+					$(MAKE_LIB) $(LIBFT_DIR) clean
+					$(MAKE_LIB) $(FT_PRINTF_DIR) clean
+
+lib_fclean:
+					$(MAKE_LIB) $(LIBFT_DIR) fclean
+					$(MAKE_LIB) $(FT_PRINTF_DIR) fclean
+
+clean:				lib_clean
+					$(RM) obj
+
+fclean:				clean lib_fclean
+					$(RM) $(NAME)
+
+re:					fclean all
+
+.SILENT:
+
+.PHONY:				all lib_clean lib_fclean clean fclean re
