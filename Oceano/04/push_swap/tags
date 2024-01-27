@@ -1,0 +1,72 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARCHIVE	./Makefile	/^ARCHIVE = push_swap.a$/;"	m
+CC	./Makefile	/^CC = gcc$/;"	m
+CFLAGS	./Makefile	/^CFLAGS = -Wall -Werror -Wextra -g -O0$/;"	m
+MAKE_LIB	./Makefile	/^MAKE_LIB = ar -rcs$/;"	m
+NAME	./Makefile	/^NAME = push_swap$/;"	m
+OBJS	./Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+PUSH_SWAP_H	./push_swap.h	/^# define PUSH_SWAP_H$/;"	d
+SRCS	./Makefile	/^SRCS = error_free.c main.c push_command.c push_swap_command.c push_swap_init.c \\$/;"	m
+above_median	./push_swap.h	/^	bool				above_median;$/;"	m	struct:s_stack
+append_node	./stack_utils.c	/^void	append_node(t_stack **stack, int nbr)$/;"	f
+cheapest	./push_swap.h	/^	bool				cheapest;$/;"	m	struct:s_stack
+count_words	./split.c	/^static int	count_words(char const *s, char c)$/;"	f	file:
+current_position	./push_swap.h	/^	int					current_position;$/;"	m	struct:s_stack
+error_free	./error_free.c	/^void	error_free(t_stack **a, char **argv, bool is_argc_2)$/;"	f
+error_repetition	./error_free.c	/^int	error_repetition(t_stack *a, int nbr)$/;"	f
+error_syntax	./error_free.c	/^int	error_syntax(char *str)$/;"	f
+fill_result	./split.c	/^static char	**fill_result(char **res, char const *s, char c, int wc)$/;"	f	file:
+final_index	./push_swap.h	/^	int					final_index;$/;"	m	struct:s_stack
+find_highest	./tiny_sort.c	/^static t_stack	*find_highest(t_stack *stack)$/;"	f	file:
+find_last_node	./stack_utils.c	/^t_stack	*find_last_node(t_stack *head)$/;"	f
+find_smallest	./stack_utils.c	/^t_stack	*find_smallest(t_stack *stack)$/;"	f
+finish_rotation	./push_swap_command.c	/^void	finish_rotation(t_stack **stack, t_stack *top_node, char stack_name)$/;"	f
+free_all	./split.c	/^static char	**free_all(char **result, int j)$/;"	f	file:
+free_args	./error_free.c	/^void	free_args(char **argv)$/;"	f
+free_stack	./error_free.c	/^void	free_stack(t_stack **stack)$/;"	f
+ft_atol	./stack_init.c	/^static long	ft_atol(const char *str)$/;"	f	file:
+ft_split	./split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strlcpy	./split.c	/^static size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f	file:
+handle_five	./tiny_sort.c	/^void	handle_five(t_stack **a, t_stack **b)$/;"	f
+init_nodes	./push_swap_init.c	/^void	init_nodes(t_stack *a, t_stack *b)$/;"	f
+main	./main.c	/^int	main(int argc, char **argv)$/;"	f
+move_nodes	./push_swap_command.c	/^static void	move_nodes(t_stack **a, t_stack **b)$/;"	f	file:
+next	./push_swap.h	/^	struct s_stack		*next;$/;"	m	struct:s_stack	typeref:struct:s_stack::s_stack
+pa	./push_command.c	/^void	pa(t_stack **a, t_stack **b, bool checker)$/;"	f
+pb	./push_command.c	/^void	pb(t_stack **b, t_stack **a, bool checker)$/;"	f
+prev	./push_swap.h	/^	struct s_stack		*prev;$/;"	m	struct:s_stack	typeref:struct:s_stack::s_stack
+push	./push_command.c	/^static void	push(t_stack **dest, t_stack **src)$/;"	f	file:
+push_price	./push_swap.h	/^	int					push_price;$/;"	m	struct:s_stack
+push_swap	./push_swap_command.c	/^void	push_swap(t_stack **a, t_stack **b)$/;"	f
+ra	./rotate_command.c	/^void	ra(t_stack **a, bool checker)$/;"	f
+rb	./rotate_command.c	/^void	rb(t_stack **b, bool checker)$/;"	f
+return_cheapest	./stack_utils.c	/^t_stack	*return_cheapest(t_stack *stack)$/;"	f
+reverse_rotate	./reverse_rotate_command.c	/^static void	reverse_rotate(t_stack **stack)$/;"	f	file:
+reverse_rotate_both	./push_swap_command.c	/^static void	reverse_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)$/;"	f	file:
+rotate	./rotate_command.c	/^static void	rotate(t_stack **stack)$/;"	f	file:
+rotate_both	./push_swap_command.c	/^static void	rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)$/;"	f	file:
+rr	./rotate_command.c	/^void	rr(t_stack **a, t_stack **b, bool checker)$/;"	f
+rra	./reverse_rotate_command.c	/^void	rra(t_stack **a, bool checker)$/;"	f
+rrb	./reverse_rotate_command.c	/^void	rrb(t_stack **b, bool checker)$/;"	f
+rrr	./reverse_rotate_command.c	/^void	rrr(t_stack **a, t_stack **b, bool checker)$/;"	f
+s_stack	./push_swap.h	/^typedef struct s_stack$/;"	s
+sa	./swap_command.c	/^void	sa(t_stack	**a, bool checker)$/;"	f
+sb	./swap_command.c	/^void	sb(t_stack **b, bool checker)$/;"	f
+set_cheapest	./push_swap_init.c	/^void	set_cheapest(t_stack *b)$/;"	f
+set_current_position	./push_swap_init.c	/^void	set_current_position(t_stack *stack)$/;"	f
+set_price	./push_swap_init.c	/^void	set_price(t_stack *a, t_stack *b)$/;"	f
+set_target_node	./push_swap_init.c	/^static void	set_target_node(t_stack *a, t_stack *b)$/;"	f	file:
+ss	./swap_command.c	/^void	ss(t_stack **a, t_stack **b, bool checker)$/;"	f
+stack_init	./stack_init.c	/^void	stack_init(t_stack **a, char **argv, bool flag_argc_2)$/;"	f
+stack_len	./stack_utils.c	/^int	stack_len(t_stack *stack)$/;"	f
+stack_sorted	./tiny_sort.c	/^bool	stack_sorted(t_stack *stack)$/;"	f
+swap	./swap_command.c	/^static void	swap(t_stack **head)$/;"	f	file:
+t_stack	./push_swap.h	/^}				t_stack;	$/;"	t	typeref:struct:s_stack
+target_node	./push_swap.h	/^	struct s_stack		*target_node;$/;"	m	struct:s_stack	typeref:struct:s_stack::s_stack
+tiny_sort	./tiny_sort.c	/^void	tiny_sort(t_stack **a)$/;"	f
+value	./push_swap.h	/^	int					value;$/;"	m	struct:s_stack
