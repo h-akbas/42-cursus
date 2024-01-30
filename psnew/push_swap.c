@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!is_valid_args(argc, argv))
 		print_error(-1);
-	create_stacks(&table, argc, argv);
+	set_table(&table, argc, argv);
 	if (is_sorted(table->stack_a))
 		return (0);
 	assign_indexes(table->stack_a);

@@ -35,7 +35,7 @@ typedef struct s_table
 	int				stack_size;
 }					t_table;
 
-void	create_stacks(t_table **table, int argc, char **argv);
+void	set_table(t_table **table, int argc, char **argv);
 bool	is_sorted(t_stack *stack);
 void	assign_indexes(t_stack *stack);
 t_stack	*push_to_stack(t_table *table, int target_stack);
