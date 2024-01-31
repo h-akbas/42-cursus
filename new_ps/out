@@ -1,0 +1,31 @@
+sa
+rra
+Process:         push_swap [42798]
+Path:            /Users/USER/*/push_swap
+Load Address:    0x104388000
+Identifier:      push_swap
+Version:         0
+Code Type:       ARM64
+Platform:        macOS
+Parent Process:  bash [42797]
+
+Date/Time:       2024-01-01 23:52:18.268 +0300
+Launch Time:     2024-01-01 23:52:13.169 +0300
+OS Version:      macOS 14.2.1 (23C71)
+Report Version:  7
+Analysis Tool:   /usr/bin/leaks
+
+Physical footprint:         736K
+Physical footprint (peak):  736K
+Idle exit:                  untracked
+----
+
+leaks Report Version: 4.0
+Process 42798: 189 nodes malloced for 10 KB
+Process 42798: 3 leaks for 48 total leaked bytes.
+
+    3 (48 bytes) << TOTAL >>
+      1 (16 bytes) ROOT LEAK: 0x13ae05e30 [16]
+      1 (16 bytes) ROOT LEAK: 0x13ae05fc0 [16]
+      1 (16 bytes) ROOT LEAK: 0x13ae05fd0 [16]
+
