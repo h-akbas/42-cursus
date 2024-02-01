@@ -1,0 +1,16 @@
+op_push.c
+op_reverse_r.c
+op_rotate.c
+op_swap.c
+parse_data.c
+push_swap.c
+push_swap_utils.c
+sort.c
+sort_check_a.c
+sort_check.c
+sort_do.c
+sort_rotation.c
+sort_three.c
+stack_get_utils.c
+stack_init_utils.c
+stack_misc_utils.c
