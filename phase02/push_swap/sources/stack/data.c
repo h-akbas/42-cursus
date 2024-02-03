@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "../../include/stack.h"
+#include <stdlib.h>
 
 static void	create_stack(t_data *data, t_stack *stack, int size)
 {
@@ -26,9 +27,9 @@ static void	create_stack(t_data *data, t_stack *stack, int size)
 void		parse_data(t_data *data, int argc, char **argv, bool reporting)
 {
 	--argc;
-	create_stack(data, &data->a, argc);
-	create_stack(data, &data->b, argc);
-	fill_stack(data, &data->a, argc, ++argv);
+	create_stack(data, data->a, argc);
+	create_stack(data, data->b, argc);
+	fill_stack(data, data->a, argc, ++argv);
 	data->reporting = reporting;
 	data->instructions = NULL;
 }
@@ -45,7 +46,7 @@ bool	check_sorted(t_data *data)
 		if (data->a->arr[i] != rank)
 			return (false);
 		rank++;
-		i = get_index_below(i, data->a->size);
+		i = get_index_below(data->a, data->a->size);
 	}
 	return (true);
 }

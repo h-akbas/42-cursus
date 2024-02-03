@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../include/stack.h"
+#include "../../include/push_swap.h"
 
 static int	ft_count_args(char **args);
 

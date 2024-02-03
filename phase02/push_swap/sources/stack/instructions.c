@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "../../include/stack.h"
+#include "../../libraries/ft_printf/ft_printf.h"
 
 void		record_instruction(t_data *data, enum e_ops instruction)
 {

@@ -29,14 +29,25 @@ bool	is_sorted(t_stack *stack)
 void	assign_indexes(t_stack *stack)
 {
 	t_stack	*temp;
+	t_stack	*top;
 	int		i;
 
+
+
 	i = 0;
-	temp = stack;
-	while (temp)
+	top = stack;
+	while (stack)
 	{
-		temp->index = i;
-		temp = temp->next;
-		i++;
+		temp = top;
+		while(temp)
+		{
+			if (temp->value < stack->value)
+				i++;
+			temp=temp->next;
+		}
+		stack->index = i;
+		stack = stack->next;
+		i = 0;
 	}
 }
+

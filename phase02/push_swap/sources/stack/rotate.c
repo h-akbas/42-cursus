@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "../../include/stack.h"
 
 void		rotate(t_stack *stack)
 {

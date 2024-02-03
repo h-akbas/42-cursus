@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "../../include/stack.h"
 #include <limits.h>
 
 static bool	check_argv_validity(char *argv);
@@ -57,14 +57,16 @@ static bool	check_argv_validity(char *argv)
     number = 0;
     while (*argv)
     {
-        if (!is_digit(*argv))
+        if (!ft_isdigit(*argv))
             return (false);
         number = number * 10 + (*argv - '0');
         if ((sign == 1 && number > INT_MAX) || (sign == -1 && number < INT_MIN))
             return (false);
         argv++;
     }
+    return (true);
 }
+
 void	check_duplicate(t_data *data, int *numbers, int size)
 {
 	int	i;

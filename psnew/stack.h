@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 04:29:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/01/30 08:25:27 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/01/30 08:33:59 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_table
 	int				stack_size;
 }					t_table;
 
-void	set_table(t_table **table, int argc, char **argv);
+void	set_table(t_table **table, int ac, char **av);
 bool	is_sorted(t_stack *stack);
 void	assign_indexes(t_stack *stack);
 t_stack	*push_to_stack(t_table *table, int target_stack);

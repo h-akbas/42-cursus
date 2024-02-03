@@ -25,9 +25,9 @@ static int	ft_hexa(unsigned long long nbr)
 	}
 	else
 	{
-		if (nbr >= 0 && nbr <= 9)
+		if (nbr <= 9)
 			c = nbr + 48;
-		else if (nbr >= 10 & nbr <= 16)
+		else if (nbr >= 10 && nbr <= 16)
 			c = nbr + 'a' - 10;
 		i += write(1, &c, 1);
 	}

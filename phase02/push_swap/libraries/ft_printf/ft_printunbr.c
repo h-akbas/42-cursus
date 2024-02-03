@@ -22,7 +22,7 @@ int	ft_printunbr(unsigned int nbr)
 		i += ft_printunbr(nbr / 10);
 		i += ft_printunbr(nbr % 10);
 	}
-	if (nbr >= 0 && nbr <= 9)
+	if (nbr <= 9)
 	{
 		nbr += 48;
 		i += write(1, &nbr, 1);

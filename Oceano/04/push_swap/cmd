@@ -1,4 +1,0 @@
-digraph flowchart {
-	start -> initialize -> process -> finalize -> end;
-}
-

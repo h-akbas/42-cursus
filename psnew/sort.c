@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 23:58:56 by hakbas            #+#    #+#             */
-/*   Updated: 2024/01/30 07:26:24 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/01/30 15:55:28 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,17 @@ static void	sort_three(t_table *table)
 	{
 		if (b > c)
 			sa(table, 1);
-		else
-			ra(table, 1); //o: sa_ra(table, 1);
+		ra(table, 1); //o: sa_ra(table, 1);
 	}
 	else if (b > a && b > c)
 	{
 		if (a > c)
-			rra(table, 1); //o: ra(table, 1);
+			sa(table, 1); //o: ra(table, 1);
 		else
-			sa(table, 1); //o: sa_ra(table, 0);
+			rra(table, 1); //o: sa_ra(table, 0);
 	}
 	else if (a > b)
-		rra(table, 1);
+		sa(table, 1);
 }
 
 static void optisort(t_table *table)

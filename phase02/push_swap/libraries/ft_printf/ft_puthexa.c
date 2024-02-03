@@ -25,7 +25,7 @@ int	ft_puthexa(unsigned int nbr, const char format)
 	}
 	else
 	{
-		if (nbr >= 0 && nbr <= 9)
+		if (nbr <= 9)
 			c = nbr + 48;
 		else if (nbr >= 10 && nbr <= 15)
 		{

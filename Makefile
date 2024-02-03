@@ -1,85 +1,47 @@
-NAME			=	push_swap
-NAME_B			=	checker
-LIBFT			=	libft.a libftprintf.a
-DIR_SRCS		=	srcs/mandatory
-DIR_BONUS		=	srcs/bonus
-DIR_OBJS		=	objs
-SRCS_NAMES		=	both_stack.c \
-					parsing.c \
-					push_swap.c \
-					stack_a.c \
-					stack_b.c \
-					list.c \
-					sorting.c \
-					utils.c \
-					free.c \
-					init.c \
-					sorting2.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/30 07:36:55 by hakbas            #+#    #+#              #
+#    Updated: 2024/01/30 08:27:43 by hakbas           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS_NAMES_B	=	checker.c \
-					get_next_line_utils.c \
-					get_next_line.c \
-					both_stack_bonus.c \
-					parsing.c \
-					stack_a_bonus.c \
-					stack_b_bonus.c \
-					list.c \
-					utils_bonus.c \
-					free.c \
-					push_swap_bonus.c \
 
-OBJS_NAMES		=	${SRCS_NAMES:.c=.o}
-OBJS_NAMES_B	=	${SRCS_NAMES_B:.c=.o}
-SRCS			=	$(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-SRCS_B			=	$(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
-OBJS			=	$(addprefix $(DIR_OBJS)/,$(OBJS_NAMES))
-OBJS_B			=	$(addprefix $(DIR_OBJS)/,$(OBJS_NAMES_B))
-HEAD			=	-Ilibft/includes -Iincludes
-CC				=	cc
-CFLAGS			=	-g3 -Wall -Werror -Wextra
-MAKEFLAGS		=	--no-print-directory
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+SRC_FILES = arg.h arg_split.c arg_validity.c \
+			op_push.c op_reverse.c op_rotate.c ops.h op_swap.c op_utils.c \
+			ps_utils.c push_swap.c push_swap.h \
+			sort.c sort.h sort_mgmt.c sort_utils.c \
+			stack.h stack_init.c stack_table.c stack_utils.c
 
-all: ${NAME}
+OBJ_FILES = $(SRC_FILES:.c=.o)
+TARGET = push_swap
 
-${NAME}: $(OBJS)
-	@make -C libft
-	@make -C libft/ft_printf
-	@cp libft/ft_printf/libftprintf.a .
-	@cp libft/libft.a .
-	$(CC) $(CFLAGS) $(OBJS) ${LIBFT} ${HEAD} -o $(NAME)
-	@echo "\033[34;5mpush_swap mandatory\033[0m"
+all: $(TARGET)
 
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
+$(TARGET): $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ_FILES)
 
-bonus: ${NAME_B}
-
-${NAME_B}: $(OBJS_B)
-	@make -C libft
-	@make -C libft/ft_printf
-	@cp libft/ft_printf/libftprintf.a .
-	@cp libft/libft.a .
-	$(CC) $(CFLAGS) $(OBJS_B) ${LIBFT} ${HEAD} -o $(NAME_B)
-	@echo "\033[39;5mpush_swap bonus\033[0m"
-
-$(DIR_OBJS)/%.o: $(DIR_BONUS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-
-$(DIR_OBJS):
-	mkdir -p $(DIR_OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	@make clean -C libft
-	@make clean -C libft/ft_printf
-	@rm -rf ${DIR_OBJS}
+	rm -v $(OBJ_FILES)
 
-fclean:	clean
-	@make fclean -C libft
-	@make fclean -C libft/ft_printf
-	@rm -rf ${LIBFT}
-	@rm -rf ${NAME}
-	@rm -rf ${NAME_B}
+fclean: clean
+	rm -v $(TARGET)
 
-re:	fclean all
+re: fclean all
 
-.PHONY:	all clean fclean re bonus
+debug: CFLAGS += -g
+debug: re
+
+sanitize: CFLAGS += -fsanitize=address
+sanitize: re
+
+.PHONY: all clean fclean re debug sanitize

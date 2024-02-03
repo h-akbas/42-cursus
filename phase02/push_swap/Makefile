@@ -1,5 +1,5 @@
 # Variables
-CC					=	gcc
+CC					=	cc
 CFLAGS				=	-Wall -Wextra -Werror -Iinclude -Isrc -O3 -g3
 RM					=	rm -rf
 CHECKER				=	checker
@@ -62,6 +62,12 @@ $(PUSH_SWAP):		$(LIB) $(PUSH_SWAP_OBJ)
 
 $(CHECKER):			$(LIB) $(CHECKER_OBJ)
 					$(CC) $(CFLAGS) $(LIB) $(CHECKER_OBJ) -o $@
+
+debug:				CFLAGS += -g3
+debug:				re
+
+sanitize:			CFLAGS += -fsanitize=address
+sanitize:			re
 
 lib_clean:
 					$(MAKE_LIB) $(LIBFT_DIR) clean

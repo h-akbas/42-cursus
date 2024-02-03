@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../include/stack.h"
 
 void	sort(t_data *data)
 {
-    if (data->a->size <= 1 || check_size(data))
+    if (data->a->size <= 1 || is_sorted(data))
         return ;
     else if(data->a->size == 3)
-        sort_three(data);
+        sort_three_a(data);
     else if(data->a->size == 5)
-        sort_five(data);
+        sort_five_a(data);
     else
         chunk_sort(data);
     optimize(data);

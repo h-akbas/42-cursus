@@ -12,7 +12,7 @@
 
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SRC_FILES = arg.h arg_split.c arg_validity.c \
 			op_push.c op_reverse.c op_rotate.c ops.h op_swap.c op_utils.c \
 			ps_utils.c push_swap.c push_swap.h \
@@ -30,18 +30,5 @@ $(TARGET): $(OBJ_FILES)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-clean:
-	rm -v $(OBJ_FILES)
-
-fclean: clean
-	rm -v $(TARGET)
-
-re: fclean all
-
-debug: CFLAGS += -g
-debug: re
-
-sanitize: CFLAGS += -fsanitize=address
-sanitize: re
 
 .PHONY: all clean fclean re debug sanitize
