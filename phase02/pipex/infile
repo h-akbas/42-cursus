@@ -1,0 +1,58 @@
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A4 Page with Circles and Numbers</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    svg {
+      background-color: white;
+      border: 1px solid #ccc;
+    }
+
+    circle {
+      fill: lightblue;
+      stroke: #333;
+      stroke-width: 2;
+    }
+
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #333;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+  </style>
+</head>
+<body>
+
+  <svg width="595" height="842" xmlns="http://www.w3.org/2000/svg">
+    <!-- A4 page size: 595 x 842 units -->
+
+    <!-- Example: 50 circles with numbers -->
+    <!-- You can adjust the positioning and styling as needed -->
+    <!-- This example arranges circles in a 5x10 grid -->
+
+    <!-- Rows -->
+    <g transform="translate(20, 20)">
+      <!-- Columns -->
+      <g transform="translate(0, 0)">
+        <!-- Circle 1 -->
+        <circle cx="30" cy="30" r="20"/>
+        <!-- Number inside the circle -->
+        <text x="30" y="30">1</text>
+      </g>
+      
+      <!-- Repeat for circles 2 to 50... -->
+    </g>
+  a
