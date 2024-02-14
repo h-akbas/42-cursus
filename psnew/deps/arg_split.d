@@ -1,1 +1,0 @@
-./arg_split.o: ./arg_split.c
