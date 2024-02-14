@@ -1,0 +1,19 @@
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore text editor files
+.vscode/
+*.swp
+*.swo
+
+# Ignore compiled files
+*.o
+*.out
+*.exe
+
+# Ignore build and dependency directories
+objs/
+bin/
+node_modules/
+
