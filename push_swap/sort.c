@@ -6,13 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:00:40 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/11 11:05:16 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 #include "operation.h"
 #include "sort.h"
+#include <stddef.h>
 
 static void		sort_until_three(t_stack **stack_a, t_stack **stack_b);
 static t_stack	*sort_b(t_stack **stack_a);
@@ -25,7 +26,7 @@ void	sort(t_stack **stack_a)
 
 	stack_b = NULL;
 	if (get_stack_size(*stack_a) == 2)
-		sa(stack_a, 0);
+		sa(stack_a);
 	else
 	{
 		stack_b = sort_b(stack_a);
@@ -34,12 +35,12 @@ void	sort(t_stack **stack_a)
 		if (i < get_stack_size(*stack_a) - i)
 		{
 			while ((*stack_a)->nbr != get_min(*stack_a))
-				ra(stack_a, 0);
+				ra(stack_a);
 		}
 		else
 		{
 			while ((*stack_a)->nbr != get_min(*stack_a))
-				rra(stack_a, 0);
+				rra(stack_a);
 		}
 	}
 }
@@ -75,9 +76,9 @@ static t_stack	*sort_b(t_stack **stack_a)
 
 	stack_b = NULL;
 	if (get_stack_size(*stack_a) > 3 && !check_sort(*stack_a))
-		pb(stack_a, &stack_b, 0);
+		pb(stack_a, &stack_b);
 	if (get_stack_size(*stack_a) > 3 && !check_sort(*stack_a))
-		pb(stack_a, &stack_b, 0);
+		pb(stack_a, &stack_b);
 	if (get_stack_size(*stack_a) > 3 && !check_sort(*stack_a))
 		sort_until_three(stack_a, &stack_b);
 	if (!check_sort(*stack_a))

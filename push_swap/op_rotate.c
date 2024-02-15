@@ -6,13 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:23:41 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/11 10:53:22 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:33:32 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operation.h"
+#include "./libft/libft.h"
 
-void	ra(t_stack **a, int j)
+void	ra(t_stack **a)
 {
 	t_stack	*tmp;
 
@@ -23,11 +24,10 @@ void	ra(t_stack **a, int j)
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "ra\n", 3);
+	ft_putendl_fd("ra", 1);
 }
 
-void	rb(t_stack **b, int j)
+void	rb(t_stack **b)
 {
 	t_stack	*tmp;
 
@@ -38,11 +38,10 @@ void	rb(t_stack **b, int j)
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rb\n", 3);
+	ft_putendl_fd("rb", 1);
 }
 
-void	rr(t_stack **a, t_stack **b, int j)
+void	rr(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
@@ -58,6 +57,5 @@ void	rr(t_stack **a, t_stack **b, int j)
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rr\n", 3);
+	ft_putendl_fd("rr", 1);
 }

@@ -6,13 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:24:16 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/11 10:53:05 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:33:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operation.h"
+#include "./libft/libft.h"
 
-void	rra(t_stack **a, int j)
+void	rra(t_stack **a)
 {
 	t_stack	*tmp;
 	int		i;
@@ -33,11 +34,10 @@ void	rra(t_stack **a, int j)
 		i--;
 	}
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rra\n", 4);
+	ft_putendl_fd("rra", 1);
 }
 
-void	rrb(t_stack **b, int j)
+void	rrb(t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -58,11 +58,10 @@ void	rrb(t_stack **b, int j)
 		i--;
 	}
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rrb\n", 4);
+	ft_putendl_fd("rrb", 1);
 }
 
-void	rrr_helper(t_stack **b, int j)
+void	rrr_helper(t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -81,11 +80,10 @@ void	rrr_helper(t_stack **b, int j)
 		i--;
 	}
 	tmp->next = NULL;
-	if (j == 0)
-		write(1, "rrr\n", 4);
+	ft_putendl_fd("rrr", 1);
 }
 
-void	rrr(t_stack **a, t_stack **b, int j)
+void	rrr(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 	int		i;
@@ -106,5 +104,5 @@ void	rrr(t_stack **a, t_stack **b, int j)
 		i--;
 	}
 	tmp->next = NULL;
-	rrr_helper(b, j);
+	rrr_helper(b);
 }

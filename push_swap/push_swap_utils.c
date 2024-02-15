@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:50:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 11:25:40 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:09:36 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 #include <stdlib.h>
-#include <unistd.h>
+#include "./libft/libft.h"
 
 void	put_error(void)
 {
-	write(2, "Error\n", 6);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 

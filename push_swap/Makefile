@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+         #
+#    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 11:22:09 by hakbas            #+#    #+#              #
-#    Updated: 2024/02/14 11:22:10 by hakbas           ###   ########.fr        #
+#    Updated: 2024/02/14 21:44:11 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,4 @@ re: fclean all
 debug: $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(DFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -o $(TARGET)
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:29:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 11:38:25 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 20:53:45 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "stack.h"
 #include "./libft/libft.h"
 #include "push_swap.h"
@@ -51,8 +52,8 @@ static void	assert_digit(char c)
 
 static int	extract_ints(const char *str)
 {
-	int			sign;
-	long int	result;
+	int		sign;
+	long	result;
 
 	result = 0;
 	sign = 1;
@@ -86,7 +87,7 @@ static t_stack	*parse_args(char **argv)
 
 	a = NULL;
 	i = 0;
-	tmp = ft_split(argv[1], 32);
+	tmp = ft_split(argv[1], ' ');
 	check_null(tmp);
 	while (tmp[i])
 	{

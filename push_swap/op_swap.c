@@ -6,13 +6,14 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:22:22 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/11 10:54:32 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/14 21:34:02 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "operation.h"
+#include "./libft/libft.h"
 
-void	sa(t_stack **a, int j)
+void	sa(t_stack **a)
 {
 	t_stack	*tmp;
 
@@ -22,11 +23,10 @@ void	sa(t_stack **a, int j)
 	*a = (*a)->next;
 	tmp->next = (*a)->next;
 	(*a)->next = tmp;
-	if (j == 0)
-		write(1, "sa\n", 3);
+	ft_putendl_fd("sa", 1);
 }
 
-void	sb(t_stack **b, int j)
+void	sb(t_stack **b)
 {
 	t_stack	*tmp;
 
@@ -36,11 +36,10 @@ void	sb(t_stack **b, int j)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-	if (j == 0)
-		write(1, "sb\n", 3);
+	ft_putendl_fd("sb", 1);
 }
 
-void	ss(t_stack **a, t_stack **b, int j)
+void	ss(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
@@ -54,6 +53,5 @@ void	ss(t_stack **a, t_stack **b, int j)
 	*b = (*b)->next;
 	tmp->next = (*b)->next;
 	(*b)->next = tmp;
-	if (j == 0)
-		write(1, "ss\n", 3);
+	ft_putendl_fd("ss", 1);
 }

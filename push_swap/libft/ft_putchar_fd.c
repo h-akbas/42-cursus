@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:06:57 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 20:54:42 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 21:18:11 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 21:18:13 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stddef.h"
+#include <unistd.h>
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*start;
-
-	start = (char *)s;
-	while (*s)
-	{
-		s++;
-	}
-	return (s - start);
+	write(fd, &c, 1);
 }
