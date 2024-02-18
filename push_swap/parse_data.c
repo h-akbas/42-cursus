@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:29:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 20:53:45 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/17 12:04:16 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static t_stack	*parse_args(char **argv)
 	a = NULL;
 	i = 0;
 	tmp = ft_split(argv[1], ' ');
-	check_null(tmp);
+	assert_not_null(tmp);
 	while (tmp[i])
 	{
 		j = extract_ints(tmp[i]);

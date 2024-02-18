@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 21:38:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 11:32:37 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/17 12:03:33 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack	*create_new_stack(int content)
 	t_stack	*new_stack;
 
 	new_stack = (t_stack *)malloc(sizeof(t_stack));
-	check_null(new_stack);
+	assert_not_null(new_stack);
 	new_stack->nbr = content;
 	new_stack->next = NULL;
 	return (new_stack);

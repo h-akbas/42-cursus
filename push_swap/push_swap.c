@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:32:03 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/14 11:33:06 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/17 12:03:39 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "stack.h"
+#include <stdlib.h>
 
 int	main(int argc, char **argv)
 {
@@ -20,14 +21,14 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	a = parse_data(argc, argv);
-	check_null(a);
-	if (check_duplication(a))
+	assert_not_null(a);
+	if (check_duplication(a) == 1)
 	{
 		destroy_stack(&a);
 		put_error();
 	}
-	if (!check_sort(a))
+	if (check_sort(a) == 0)
 		sort(&a);
 	destroy_stack(&a);
-	return (0);
+	return (EXIT_SUCCESS);
 }
