@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 21:38:29 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/19 00:21:35 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:25:38 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,7 @@ void	append_stack(t_stack **stack, int num)
 	}
 }
 
-bool	invalid_input(char *str)
-{
-	if (ft_strlen(str) == 0 || ft_strlen(str) > 11)
-		return (true);
-	if (!(*str == '-' || *str == '+' || ft_isdigit(*str)))
-		return (true);
-	if ((*str == '-' || *str == '+') && !ft_isdigit(str[1]))
-		return (true);
-	while (*++str)
-	{
-		if (!ft_isdigit(*str))
-			return (true);
-		str++;
-	}
-	return (false);
-}
+
 
 void	destroy_args(char **args)
 {

@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_data.c                                       :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:29:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/19 00:27:00 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:32:57 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
 #include "stack.h"
 #include "./libft/libft.h"
 #include "push_swap.h"
 
+static bool		invalid_input(char *str);
 static long		extract_nums(const char *str);
 static bool		check_duplication(t_stack *a, long num);
+static void		revert_alloc(t_stack **a, char **argv, bool is_argc_2);
 
 void	init_data(t_stack **a, char **argv, bool is_argc_2)
 {
@@ -27,17 +30,33 @@ void	init_data(t_stack **a, char **argv, bool is_argc_2)
 	while (argv[i])
 	{
 		if (invalid_input(argv[i]))
-			put_error_free(a, argv, is_argc_2);
+			revert_alloc(a, argv, is_argc_2);
 		num = extract_nums(argv[i]);
-		if (num > 2147483647 || num < -2147483648)
-			put_error_free(a, argv, is_argc_2);
+		if (num > INT_MAX || num < INT_MIN)
+			revert_alloc(a, argv, is_argc_2);
 		if (check_duplication(*a, (int)num))
-			put_error_free(a, argv, is_argc_2);
+			revert_alloc(a, argv, is_argc_2);
 		append_stack(a, (int)num);
 		++i;
 	}
 	if (is_argc_2)
 		destroy_args(argv);
+}
+
+bool	invalid_input(char *str)
+{
+	if (ft_strlen(str) == 0 || ft_strlen(str) > 11)
+		return (true);
+	if (!(*str == '-' || *str == '+' || ft_isdigit(*str)))
+		return (true);
+	if ((*str == '-' || *str == '+') && !ft_isdigit(str[1]))
+		return (true);
+	while (*++str)
+	{
+		if (!ft_isdigit(*str))
+			return (true);
+	}
+	return (false);
 }
 
 static long	extract_nums(const char *str)
@@ -75,4 +94,12 @@ static bool	check_duplication(t_stack *a, long num)
 		a = a->next;
 	}
 	return (false);
+}
+static void		revert_alloc(t_stack **a, char **argv, bool is_argc_2)
+{
+	if (*a)
+		destroy_stack(a);
+	if (is_argc_2)
+		destroy_args(argv);
+	put_error();
 }

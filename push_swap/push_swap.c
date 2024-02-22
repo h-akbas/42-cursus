@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:32:03 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/19 00:24:32 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:21:38 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 
 	a = NULL;
-	if (argc < 2)
-		return (1);
+	if (argc < 2 || (argc == 2 && !*argv[1]))
+		return (EXIT_FAILURE);
 	else if (argc == 2)
 	{
 		argv = split_args(argv[1], ' ');

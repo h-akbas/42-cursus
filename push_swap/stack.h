@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:39:48 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/19 00:29:01 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:26:50 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ int			check_sort(t_stack *stack_a);
 void		init_data(t_stack **a, char **argv, bool is_argc_2);
 int			check_access_a(t_stack *stack_a, int nbr_push);
 int			check_access_b(t_stack *stack_b, int nbr_push);
-bool		invalid_input(char *str);
 
 #endif
