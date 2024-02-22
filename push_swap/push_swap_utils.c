@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 20:50:58 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/17 12:03:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/19 00:26:21 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ void	put_error(void)
 {
 	ft_putendl_fd("Error", STDERR_FILENO);
 	exit(1);
+}
+
+void	put_error_free(t_stack **a, char **args, bool is_argc_2)
+{
+	destroy_stack(a);
+	if (is_argc_2)
+		destroy_args(args);
+	put_error();
 }
 
 void	assert_not_null(void *ptr)

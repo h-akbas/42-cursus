@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 17:32:03 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/17 12:03:39 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/19 00:24:32 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 
+	a = NULL;
 	if (argc < 2)
-		return (0);
-	a = parse_data(argc, argv);
-	assert_not_null(a);
-	if (check_duplication(a) == 1)
+		return (1);
+	else if (argc == 2)
 	{
-		destroy_stack(&a);
-		put_error();
+		argv = split_args(argv[1], ' ');
+		assert_not_null(argv);
 	}
+	init_data(&a, argv + 1, argc == 2);
+	assert_not_null(a);
 	if (check_sort(a) == 0)
 		sort(&a);
 	destroy_stack(&a);

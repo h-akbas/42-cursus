@@ -6,7 +6,7 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 11:22:09 by hakbas            #+#    #+#              #
-#    Updated: 2024/02/14 21:44:11 by hakbas           ###   ########.fr        #
+#    Updated: 2024/02/18 23:52:37 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = op_push.c \
        sort_do.c \
        sort_rotation.c \
        sort_three.c \
+       split_args.c \
        stack_get_utils.c \
        stack_init_utils.c \
        stack_misc_utils.c

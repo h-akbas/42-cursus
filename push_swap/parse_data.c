@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 19:29:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/02/17 12:04:16 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/02/19 00:27:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,42 +15,32 @@
 #include "./libft/libft.h"
 #include "push_swap.h"
 
-static void		assert_digit(char c);
-static int		extract_ints(const char *str);
-static t_stack	*parse_args(char **argv);
-static void		destroy_args(char **args);
+static long		extract_nums(const char *str);
+static bool		check_duplication(t_stack *a, long num);
 
-t_stack	*parse_data(int argc, char **argv)
+void	init_data(t_stack **a, char **argv, bool is_argc_2)
 {
-	t_stack	*a;
 	int		i;
-	int		j;
+	long	num;
 
-	i = 1;
-	a = NULL;
-	if (argc == 2)
-		a = parse_args(argv);
-	else
+	i = 0;
+	while (argv[i])
 	{
-		while (i < argc)
-		{
-			j = extract_ints(argv[i]);
-			append_stack(&a, create_new_stack(j));
-			i++;
-		}
+		if (invalid_input(argv[i]))
+			put_error_free(a, argv, is_argc_2);
+		num = extract_nums(argv[i]);
+		if (num > 2147483647 || num < -2147483648)
+			put_error_free(a, argv, is_argc_2);
+		if (check_duplication(*a, (int)num))
+			put_error_free(a, argv, is_argc_2);
+		append_stack(a, (int)num);
+		++i;
 	}
-	return (a);
+	if (is_argc_2)
+		destroy_args(argv);
 }
 
-static void	assert_digit(char c)
-{
-	if (!ft_isdigit(c))
-		put_error();
-	else
-		return ;
-}
-
-static int	extract_ints(const char *str)
+static long	extract_nums(const char *str)
 {
 	int		sign;
 	long	result;
@@ -66,50 +56,23 @@ static int	extract_ints(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	assert_digit(*str);
 	while (*str)
 	{
-		assert_digit(*str);
 		result = result * 10 + (*str - 48);
 		str++;
 	}
-	if ((sign * result) > 2147483647 || (sign * result) < -2147483648)
-		put_error();
 	return (sign * result);
 }
 
-static t_stack	*parse_args(char **argv)
+static bool	check_duplication(t_stack *a, long num)
 {
-	t_stack	*a;
-	char	**tmp;
-	int		i;
-	int		j;
-
-	a = NULL;
-	i = 0;
-	tmp = ft_split(argv[1], ' ');
-	assert_not_null(tmp);
-	while (tmp[i])
+	if (!a)
+		return (false);
+	while (a)
 	{
-		j = extract_ints(tmp[i]);
-		append_stack(&a, create_new_stack(j));
-		i++;
+		if (a->nbr == num)
+			return (true);
+		a = a->next;
 	}
-	destroy_args(tmp);
-	free(tmp);
-	return (a);
-}
-
-static void	destroy_args(char **args)
-{
-	char	*tmp;
-
-	if (!args)
-		return ;
-	while (*args)
-	{
-		tmp = *args;
-		args++;
-		free(tmp);
-	}
+	return (false);
 }
