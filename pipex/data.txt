@@ -1,0 +1,16 @@
+apple
+banana
+apple
+cherry
+banana
+apple
+elephant
+dog
+cat
+banana
+cherry
+frog
+elephant
+giraffe
+frog
+apple
