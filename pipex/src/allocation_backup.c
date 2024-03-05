@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   allocation_bonus.c                                 :+:      :+:    :+:   */
+/*   allocation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 23:35:51 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/05 20:51:20 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/03 21:38:48 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,16 @@
 #include <stdlib.h>
 #include "../include/pipex.h"
 
-void	*safe_alloc(void *pointer, t_alloc mode, t_data *data)
+void	*s_alloc(void *pointer, t_alloc mode, t_data *d)
 {
 	if (!pointer)
-		put_error("Memory allocation", strerror(errno), EXIT_FAILURE, data);
+		put_error("Memory allocation", strerror(errno), EXIT_FAILURE, d);
 	if (mode == TRACK)
-	{
-		if (!track_alloc(data, pointer))
-			pointer = NULL;
-	}
+		track_alloc(d, pointer);
 	return (pointer);
 }
 
-int	track_alloc(t_data *data, void *pointer)
+void	track_alloc(t_data *d, void *pointer)
 {
 	t_list	*new_node;
 
@@ -35,9 +32,7 @@ int	track_alloc(t_data *data, void *pointer)
 	if (!new_node)
 	{
 		free(pointer);
-		put_error("Memory allocation", strerror(errno), EXIT_FAILURE, data);
-		return (0);
+		put_error("Memory allocation", strerror(errno), EXIT_FAILURE, d);
 	}
-	ft_lstadd_front(&data->allocated_pointers, new_node);
-	return (1);
+	ft_lstadd_front(&d->allocated_pointers, new_node);
 }

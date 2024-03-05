@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 13:03:12 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/03 00:33:05 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/05 19:42:16 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	int		wc;
 
+	if (!s)
+		return (NULL);
 	result = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !result)
+	if (!result)
 		return (NULL);
 	wc = count_words(s, c);
 	return (fill_result(result, s, c, wc));

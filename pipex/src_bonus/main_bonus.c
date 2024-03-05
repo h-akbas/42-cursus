@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 23:54:04 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/03 21:43:55 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/05 21:02:51 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	check_args(int argc, char **argv);
 
 int	main(int argc, char **argv, char **env)
 {
-	t_data	d;
+	t_data	data;
 
 	check_args(argc, argv);
-	init_data(&d, argc, argv, env);
-	execute_pipeline(&d);
-	ft_lstclear(&d.allocated_pointers, free);
-	return (d.last_cmd_exit_status);
+	init_data(&data, argc, argv, env);
+	execute_pipeline(&data);
+	ft_lstclear(&data.allocated_pointers, free);
+	return (data.last_cmd_exit_status);
 }
 
 static void	check_args(int argc, char **argv)

@@ -6,13 +6,13 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/03 15:21:35 by hakbas            #+#    #+#              #
-#    Updated: 2024/03/03 15:40:35 by hakbas           ###   ########.fr        #
+#    Updated: 2024/03/05 20:38:58 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -fsanitize=undefined
 CFLAGS			+=	-g -Iinclude -Isrc -Ofast
 RM				=	rm -rf
 PIPEX			=	$(NAME)

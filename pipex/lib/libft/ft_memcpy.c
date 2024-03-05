@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: halilakbas <halilakbas@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:10:28 by hakbas            #+#    #+#             */
-/*   Updated: 2023/10/12 19:22:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/05 21:07:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*d;
 	const char	*s;
 
-	if (!dst && !src)
-		return (0);
+	if (dst == NULL || src == NULL)
+		return (dst);
 	d = (char *)dst;
 	s = (const char *)src;
 	while (n)

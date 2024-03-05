@@ -6,27 +6,27 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 23:54:47 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/03 21:41:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/05 20:49:49 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 #include <stdlib.h>
 
-static void	normal_state(char *str, t_parser *parser, t_data *d);
+static void	normal_state(char *str, t_parser *parser, t_data *data);
 static void	single_quote_state(char *str, t_parser *parser);
 static void	double_quote_state(char *str, t_parser *parser);
 
-char	**parse_cmd(char *str, t_data *d)
+char	**parse_cmd(char *str, t_data *data)
 {
 	t_parser	parser;
 	char		**cmd_exe;
 
-	init_parser(&parser, str, d);
+	init_parser(&parser, str, data);
 	while (str[parser.i])
 	{
 		if (parser.state == NORMAL)
-			normal_state(str, &parser, d);
+			normal_state(str, &parser, data);
 		else if (parser.state == IN_SINGLE_QUOTE)
 			single_quote_state(str, &parser);
 		else if (parser.state == IN_DOUBLE_QUOTE)
@@ -34,17 +34,17 @@ char	**parse_cmd(char *str, t_data *d)
 		parser.i++;
 	}
 	if (parser.state != NORMAL)
-		put_error("parse error", "unclosed quote", EXIT_FAILURE, d);
-	add_token_to_list(&parser, d);
-	cmd_exe = convert_list_to_array(&parser, d);
+		put_error("parse error", "unclosed quote", EXIT_FAILURE, data);
+	add_token_to_list(&parser, data);
+	cmd_exe = convert_list_to_array(&parser, data);
 	free(parser.buf);
 	return (cmd_exe);
 }
 
-static void	normal_state(char *str, t_parser *parser, t_data *d)
+static void	normal_state(char *str, t_parser *parser, t_data *data)
 {
 	if (str[parser->i] == ' ')
-		add_token_to_list(parser, d);
+		add_token_to_list(parser, data);
 	else if (str[parser->i] == '\"')
 		parser->state = IN_DOUBLE_QUOTE;
 	else if (str[parser->i] == '\'')
