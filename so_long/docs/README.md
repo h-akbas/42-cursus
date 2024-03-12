@@ -8,23 +8,21 @@
 *	Initialises the MLX library. Must be called before using any other functions.
 *
 */
-void	*mlx_init();
+void		*mlx_init();
 
 /*
 *	Creates a new windows on the screen
 *	in size_x * size_y dimension
 *	named title (in the window's title bar)
-*
-*	mlx_ptr connection identifir returned by mlx_init()
+*	mlx_ptr: connection identifier returned by mlx_init()
 *	return NULL on failure or void * window identifier
 *
-*	It's possible to create more than one windows using MLX.
+*	NOTE: It's possible to create more than one windows using MLX.
 *
 */
-void	*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
+void		*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 
 /*
-*
 *	clears the windows (or paint in black)
 *	mlx_ptr: connection identifier
 *	win_ptr: window identifier
@@ -32,14 +30,13 @@ void	*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 */
 int		mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 
-/**
+/*
 *
-*	Destroys (frees) the windows
+*	destroys (frees) the windows
 *	mlx_ptr: connection identifier
 *	win_ptr: window identifier
 *	returns nothing meaningful
-*
-**/
+*/
 int		mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
 
 
