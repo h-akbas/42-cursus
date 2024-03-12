@@ -8,7 +8,7 @@
 *	Initialises the MLX library. Must be called before using any other functions.
 *
 */
-void		*mlx_init();
+void	*mlx_init();
 
 /*
 *	Creates a new windows on the screen
@@ -20,7 +20,7 @@ void		*mlx_init();
 *	NOTE: It's possible to create more than one windows using MLX.
 *
 */
-void		*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
+void	*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 
 /*
 *	clears the windows (or paint in black)
@@ -28,7 +28,7 @@ void		*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 *	win_ptr: window identifier
 *	returns nothing meaningful
 */
-int		mlx_clear_window ( void *mlx_ptr, void *win_ptr );
+int	mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 
 /*
 *
@@ -37,7 +37,7 @@ int		mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 *	win_ptr: window identifier
 *	returns nothing meaningful
 */
-int		mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
+int	mlx_destroy_window ( void *mlx_ptr, void *win_ptr );
 
 
 * mlx_hook: Registers events.
