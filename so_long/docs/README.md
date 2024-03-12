@@ -1,7 +1,12 @@
 ## STUDY NOTES:
 
 # MiniLibx (MLX) key functions
+```c
+#include  <mlx.h>
 
+void  *
+mlx_init();
+```c
 * mlx_init: Initialises the MLX library. Must be called before using any other functions.
 * mlx_new_window: Creates a new window instance.
 * mlx_hook: Registers events.
