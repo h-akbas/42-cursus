@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 19:00:25 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 19:34:14 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include "libft.h"
 
-# include "obj.h"
-
-void	display_game(t_data *data);
-
-#endif
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (n)
+	{
+		if (*s1 != *s2 || *s1 == '\0' || *s2 == '\0')
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+		s1++;
+		s2++;
+		n--;
+	}
+	return (0);
+}

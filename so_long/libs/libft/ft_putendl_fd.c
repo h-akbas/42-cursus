@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 21:18:25 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 21:18:29 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include "libft.h"
 
-# include "obj.h"
-
-void	display_game(t_data *data);
-
-#endif
+void	ft_putendl_fd(char const *s, int fd)
+{
+	if (!s)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+	ft_putchar_fd('\n', fd);
+}

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 17:38:59 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/21 13:09:32 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include "libft.h"
 
-# include "obj.h"
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	total;
+	void	*ptr;
 
-void	display_game(t_data *data);
-
-#endif
+	total = count * size;
+	ptr = (void *)malloc(total);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, total);
+	return (ptr);
+}

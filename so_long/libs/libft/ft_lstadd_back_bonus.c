@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 18:29:14 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 18:30:00 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include "libft.h"
 
-# include "obj.h"
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
 
-void	display_game(t_data *data);
-
-#endif
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
+}

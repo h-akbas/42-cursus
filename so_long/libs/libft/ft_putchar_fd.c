@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 21:18:11 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 21:18:13 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include <unistd.h>
 
-# include "obj.h"
-
-void	display_game(t_data *data);
-
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

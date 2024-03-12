@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 22:15:54 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:28 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 21:19:01 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 21:19:07 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
-#include "../inc/gfx.h"
-#include <stdlib.h>
-
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_data	data;
+	char	*last_occurrence;
+	char	ch;
 
-	check_args(argc, argv);
-	init_data(&data, argv[1]);
-	display_game(&data);
-	init_game(&data);
-	return (EXIT_SUCCESS);
+	last_occurrence = 0;
+	ch = (char)c;
+	while (1)
+	{
+		if (*s == ch)
+			last_occurrence = (char *)s;
+		if (*s == '\0')
+			return (last_occurrence);
+		s++;
+	}
+	return (0);
 }

@@ -6,62 +6,76 @@
 #    By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 21:34:47 by hakbas            #+#    #+#              #
-#    Updated: 2024/03/12 22:15:38 by hakbas           ###   ########.fr        #
+#    Updated: 2024/03/12 23:23:57 by hakbas           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	so_long
-SRC_DIR			=	src
-OBJ_DIR			=	obj
-INC_DIR			=	inc
-ASSETS_DIR		=	assets
-LIBFT_DIR		=	libs/libft
-MLX_MAC_DIR		=	libs/mlx-macos
-MLX_LINUX_DIR	=	libs/mlx-linux
-GNL_DIR			=	libs/get_next_line
-FTPRINTF_DIR	=	libs/ft_printf
-CC				=	gcc
-RM				=	rm -f
-CFLAGS			=	-Wall -Wextra -Werror
-CFLAGS			+=	-I$(INC_DIR) -I$(LIBFT_DIR)/inc
-CFLAGS			+=	-g
-LD_MAC			=	-Lmlx-macos -lmlx -framework OpenGL -framework AppKit -lm
-LD_LINUX		=	-Lmlx-macos -lmlx -lXext -lX11 -lm
+# Project Name
+NAME		= so_long
 
-ifeq				($(shell uname), Linux)
-	LD_FLAGS	=	$(LD_LINUX)
-	LIB_MLX_DIR	=	$(MLX_LINUX)
-	LIB_MLX		=	$(MLX_LINUX)/libmlx.a
-else ifeq			($(shell uname), Darwin)
-	LD_FLAGS	=	$(LD_MAC)
-	LIB_MLX_DIR	=	$(MLX_MAC)
-	LIB_MLX		=	$(MLX_MAC)/libmlx.a
+# Directories
+SRC_DIR		= src
+OBJ_DIR		= obj
+INC_DIR		= inc
+ASSETS_DIR	= assets
+LIBFT_DIR	= libs/libft
+MLX_MAC_DIR	= libs/mlx_macos
+MLX_LINUX_DIR= libs/mlx_linux
+GNL_DIR		= libs/get_next_line
+FTPRINTF_DIR= libs/ft_printf
+
+# Compiler and flags
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -I$(LIBFT_DIR)/inc -g
+
+# Source and Object Files
+SRC			= main.c # error.c init.c map.c player.c collectible.c exit.c render.c utils.c events.c free.c
+OBJ			= $(SRC:%.c=$(OBJ_DIR)/%.o)
+
+# Libraries and Linking Flags
+LD_FLAGS	= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lget_next_line -L$(FTPRINTF_DIR) -lftprintf
+
+# Determine OS and adjust linking flags accordingly
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	LD_FLAGS += -L$(MLX_LINUX_DIR) -lmlx -lXext -lX11 -lm
+	LIB_MLX_DIR = $(MLX_LINUX_DIR)
+endif
+ifeq ($(UNAME_S),Darwin)
+	LD_FLAGS += -L$(MLX_MAC_DIR) -lmlx -framework OpenGL -framework AppKit
+	LIB_MLX_DIR = $(MLX_MAC_DIR)
 endif
 
-BUILD_LIBFT		=	make -C $(LIBFT_DIR)
-BUILD_MLX		=	make -C $(LIB_MLX_DIR)
-BUILD_GNL		=	make -C $(GNL_DIR)
-BUILD_FTPRINTF	=	make -C $(FTPRINTF_DIR)
-BUILD_LIBS		=	$(BUILD_LIBFT) $(BUILD_MLX) $(BUILD_GNL) $(BUILD_FTPRINTF)
+# Phony Targets
+.PHONY: all clean fclean re test leaks debug norm maps
 
-SRC				=	main.c		error.c		init.c			\
-								map.c						\
-					player.c	collectible.c	exit.c		\
-					render.c	utils.c			events.c	\
-					free.c
+# Default target
+all: $(NAME)
 
-INC				=	so_long.h	events.h		map.h		\
-					gfx.h		obj.h						\
+# Linking the executable
+$(NAME): $(OBJ)
+	make -C $(LIBFT_DIR)
+	make -C $(LIB_MLX_DIR)
+	$(CC) $(OBJ) $(LD_FLAGS) -o $@
 
-OBJ				=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+# Compiling object files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-all:			$(NAME)
+# Create obj directory
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-$(NAME):		$(OBJ) $(LIB_MLX) $(LIBFT_DIR)/libft.a $(GNL_DIR)/get_next_line.a $(FTPRINTF_DIR)/libftprintf.a
-				$(CC) $(CFLAGS) $(LD_FLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lget_next_line -L$(FTPRINTF_DIR) -lftprintf
+# Clean object files
+clean:
+	rm -rf $(OBJ_DIR)
 
+# Full clean (includes executable)
+fclean: clean
+	rm -f $(NAME)
 
-re:				fclean all
+# Rebuild everything
+re: fclean all
 
 test:			all
 				./$(NAME) $(ASSETS_DIR)/map.ber

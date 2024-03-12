@@ -31,7 +31,6 @@ void	*mlx_new_window ( void *mlx_ptr, int size_x, int size_y, char *title );
 int	mlx_clear_window ( void *mlx_ptr, void *win_ptr );
 
 /*
-*
 *	destroys (frees) the windows
 *	mlx_ptr: connection identifier
 *	win_ptr: window identifier

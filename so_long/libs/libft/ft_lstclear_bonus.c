@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 22:15:54 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:28 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/12 18:31:02 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 20:10:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
-#include "../inc/gfx.h"
-#include <stdlib.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_data	data;
+	t_list	*temp;
+	t_list	*next;
 
-	check_args(argc, argv);
-	init_data(&data, argv[1]);
-	display_game(&data);
-	init_game(&data);
-	return (EXIT_SUCCESS);
+	if (!lst || !del)
+		return ;
+	temp = *lst;
+	while (temp)
+	{
+		next = temp->next;
+		ft_lstdelone(temp, del);
+		temp = next;
+	}
+	*lst = NULL;
 }

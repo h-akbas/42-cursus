@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gfx.h                                              :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: halilakbas <halilakbas@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 21:25:28 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:49:11 by hakbas           ###   ########.fr       */
+/*   Created: 2023/10/09 20:10:28 by hakbas            #+#    #+#             */
+/*   Updated: 2023/10/12 19:22:43 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GFX_H
-# define GFX_H
+#include "libft.h"
 
-# include "obj.h"
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char		*d;
+	const char	*s;
 
-void	display_game(t_data *data);
-
-#endif
+	if (!dst && !src)
+		return (0);
+	d = (char *)dst;
+	s = (const char *)src;
+	while (n)
+	{
+		*(d++) = *(s++);
+		n--;
+	}
+	return (dst);
+}
