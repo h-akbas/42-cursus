@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:26:30 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:35:08 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/13 10:22:04 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ void	track_allocation(t_data *d, void *pointer);
 void	free_data(t_data *data);
 void	init_data(t_data *data, char *map_path);
 void	stop_game(t_data *param);
-
 
 #endif

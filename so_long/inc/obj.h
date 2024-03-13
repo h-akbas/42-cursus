@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obj.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:26:04 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/13 00:43:21 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/13 10:21:46 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ typedef enum e_direction
 typedef struct s_frame_to_display
 {
 	void			*frame;
-	t_pos
-			place_to_display;
+	t_pos			place_to_display;
 }					t_frame_to_display;
 
 typedef enum e_block
@@ -92,11 +91,9 @@ typedef struct s_data
 	void			*move_count_img;
 	int				move_count;
 	t_map			*map;
-	t_pos
-			player;
+	t_pos			player;
 	t_direction		player_orientation;
-	t_pos
-			exit;
+	t_pos			exit;
 	t_exit_status	exit_status;
 	int				collectible_count;
 }					t_data;
