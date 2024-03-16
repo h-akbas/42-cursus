@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 17:07:46 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/16 17:25:05 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 23:40:52 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ void	track_allocation(t_data *d, void *pointer)
 	ft_lstadd_front(&d->allocated_pointers, new_node);
 }
 
-void	clean_exit(t_data *data)
+int	clean_exit(t_data *data, int code)
 {
-	if (!data)
-		return ;
-	ft_lstclear(&data->allocated_pointers, &free);
-	if (data->mlx_ptr)
-		free(data->mlx_ptr);
+	int	i;
+
+	i = 0;
+	if (data->map)
 }
 
 void	ft_assert(bool condition, char *message, t_data *data)

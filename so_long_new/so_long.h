@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 21:50:02 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/16 18:58:07 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 23:11:39 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 # define ESC 53
 # define IMG_MAX 6
 # define BLOCK_NUMBER 7
+# define PLAYER_IMG			"assets/player.xpm"
+# define EXIT_IMG			"assets/exit.xpm"
+# define FLOOR_IMG			"assets/floor.xpm"
+# define COLLECTIBLE_IMG	"assets/collectible.xpm"
+# define WALL_IMG			"assets/wall.xpm"
+
 
 typedef enum e_block
 {
@@ -54,10 +60,8 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	*img[IMG_MAX];
+	void	*img[IMG_MAX + 1];
 	t_map	*map;
-	int		win_width;
-	int		win_height;
 	t_pos	pos;
 	bool	is_player_init;
 	size_t	player_moves;
@@ -149,7 +153,7 @@ void	get_map_elements(t_data *data);
 **		free heap allocated memory
 **		exits failure
 */
-void	clean_exit(t_data *data);
+int		clean_exit(t_data *data);
 
 /*
 **	Create images of elements from xpm files
@@ -162,7 +166,7 @@ void	create_images(t_data *data, int width, int height);
 **
 **
 */
-void	render(t_data *data);
+int	render(t_data *data);
 
 /*
 **
@@ -208,7 +212,7 @@ void	line_to_grid(t_block **grid, char *line, int raw);
 **
 **
 */
-int	count_block(t_map *map, t_block block_type);
+int		count_block(t_map *map, t_block block_type);
 
 /*
 **
