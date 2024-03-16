@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 23:35:56 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/15 00:03:43 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 16:02:03 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 bool	is_valid_char(char c)
 {
-	if (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
 		return (true);
 	return (false);
 }
 
-void	get_player_loc(t_data *data)
+void	get_map_elements(t_data *data)
 {
 	int	x;
 	int	y;
@@ -30,12 +30,12 @@ void	get_player_loc(t_data *data)
 	while (data->map[x])
 	{
 		y = 0;
-		while(data->map[x][y])
+		while (data->map[x][y])
 		{
 			if (data->map[x][y] == 'P')
 			{
-				data->pl_x = x;
-				data->pl_y = y;
+				data->pos.x = x;
+				data->pos.y = y;
 			}
 			if (data->map[x][y] == 'C')
 				data->coll_chk++;
@@ -45,7 +45,7 @@ void	get_player_loc(t_data *data)
 	}
 }
 
-void	find_path(t_data *data, int x, int y)
+void	check_map_movements(t_data *data, int x, int y)
 {
 	if (data->map[x][y] == '1')
 		return ;
@@ -54,8 +54,8 @@ void	find_path(t_data *data, int x, int y)
 	else if (data->map[x][y] == 'E')
 		data->is_error = true;
 	data->map[x][y] = '1';
-	find_path(data, x - 1, y);
-	find_path(data, x, y - 1);
-	find_path(data, x + 1, y);
-	find_path(data, x, y + 1);
+	check_map_movements(data, x - 1, y);
+	check_map_movements(data, x, y - 1);
+	check_map_movements(data, x + 1, y);
+	check_map_movements(data, x, y + 1);
 }

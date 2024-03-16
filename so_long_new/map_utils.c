@@ -5,56 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 22:52:11 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/14 23:11:49 by hakbas           ###   ########.fr       */
+/*   Created: 2024/03/16 18:09:20 by hakbas            #+#    #+#             */
+/*   Updated: 2024/03/16 18:36:13 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "libft/libft.h"
-#include <fcntl.h>
-#include <unistd.h>
 
-void get_height(char *str, t_data *data)
+int	count_block(t_map *map, t_block block_type)
 {
-	char	*line;
-	int		fd;
+	int		count;
+	t_pos	pos;
 
-	fd = open(str, O_RDONLY);
-	ft_assert(fd != -1, "Fd error!", data);
-	line = get_next_line(fd);
-	ft_assert(line, "Empty file!", data);
-	data->map_width = ft_strlen(line) - 1;
-	while (line)
+	count = 0;
+	pos.y = -1;
+	while (++pos.y < map->y)
 	{
-		free(line);
-		line = get_next_line(fd);
-		data->map_height++;
+		pos.x = -1;
+		while (++pos.x < map->x)
+			if (map->grid[pos.y][pos.x] == block_type)
+				count++;
 	}
-	close(fd);
+	return (count);
 }
 
-char	**parse_map(t_data *data, char *str)
+t_pos	get_position(t_map *map, t_block block_type)
 {
-	char	*line;
-	char	**map;
-	int		fd;
-	int		i;
+	t_pos	pos;
 
-	fd = open(str, O_RDONLY);
-	ft_assert(fd != -1, "Fd error!", data);
-	map = ft_calloc(sizeof(char *), data->map_height + 1);
-	ft_assert(map, "Malloc error!", data);
-	i = 0;
-	line = get_next_line(fd);
-	while (line)
+	pos.y = 0;
+	while (pos.y < map->y)
 	{
-		map[i] = ft_strdup(line);
-		ft_assert(map[i], "Malloc error!", data);
-		i++;
-		line = get_next_line(fd);
+		pos.x = 0;
+		while (pos.x < map->x)
+		{
+			if (map->grid[pos.y][pos.x] == block_type)
+				return (pos);
+			pos.x++;
+		}
+		pos.y++;
 	}
-	map[i] = NULL;
-	close(fd);
-	return (map);
+	return (pos);
 }

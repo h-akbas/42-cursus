@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakbas <halilakbas1992@gmail.com>          +#+  +:+       +#+        */
+/*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 19:01:07 by hakbas            #+#    #+#             */
-/*   Updated: 2023/10/12 19:34:56 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 16:15:19 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)

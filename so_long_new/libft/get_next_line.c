@@ -6,7 +6,7 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:29:50 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/14 23:03:45 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 18:01:01 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ char	*fetch_line(char *line, char *buffer, int *end, int fd)
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
-	char		*line;
 	int			end;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

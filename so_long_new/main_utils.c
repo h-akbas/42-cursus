@@ -5,35 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 22:06:00 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/14 22:16:27 by hakbas           ###   ########.fr       */
+/*   Created: 2024/03/16 17:07:46 by hakbas            #+#    #+#             */
+/*   Updated: 2024/03/16 17:25:05 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft/libft.h"
 #include "so_long.h"
+#include "libft/libft.h"
+#include <unistd.h>
 
-void ft_assert(bool condition, char *message, t_data *data)
+void	track_allocation(t_data *d, void *pointer)
 {
-    if (!condition)
-    {
-        ft_putendl_fd("Error: ", stderr);
-        ft_putendl_fd(message, stderr);
-        clean_exit(data);
-    }
+	t_list	*new_node;
+
+    ft_assert(pointer != NULL, "Memory allocation error", d);
+	new_node = ft_lstnew(pointer);
+    ft_assert(new_node != NULL, "Memory allocation error.", d);
+	ft_lstadd_front(&d->allocated_pointers, new_node);
 }
 
-//could be problematic
-void clean_exit(t_data *data)
+void	clean_exit(t_data *data)
 {
-    if (!data)
-        return ;
-    if (data->map)
-        free_map(data->map);
-    if (data->mlx_ptr)
-        mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-    exit(EXIT_FAILURE);
+	if (!data)
+		return ;
+	ft_lstclear(&data->allocated_pointers, &free);
+	if (data->mlx_ptr)
+		free(data->mlx_ptr);
 }
 
+void	ft_assert(bool condition, char *message, t_data *data)
+{
+	if (!condition)
+	{
+		ft_putendl_fd("Error: ", STDERR_FILENO);
+		ft_putendl_fd(message, STDERR_FILENO);
+        if (data)
+            clean_exit(data);
+		exit (EXIT_FAILURE);
+	}
+}

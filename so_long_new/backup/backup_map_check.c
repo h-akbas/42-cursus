@@ -6,38 +6,39 @@
 /*   By: hakbas <hakbas@student.42kocaeli.com.tr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 23:15:14 by hakbas            #+#    #+#             */
-/*   Updated: 2024/03/15 00:08:21 by hakbas           ###   ########.fr       */
+/*   Updated: 2024/03/16 16:39:25 by hakbas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "so_long.h"
-#include <stdio.h>
+#include <unistd.h>
 
-static void is_rectangle(t_data *data);
-static int check_elements(t_data *data, t_chk *checker);
-static int check_walls(t_data *data, t_chk *checker);
-static int check_path(t_data *data, t_chk *checker);
+static void	is_rectangle(t_data *data);
+static int	check_valid_elements(t_data *data, t_chk *checker);
+static int	check_valid_walls(t_data *data, t_chk *checker);
+static int	check_path(t_data *data);
 
-int check_map(t_data *data)
+int	check_map(t_data *data)
 {
 	t_chk	*checker;
 
 	is_rectangle(data);
 	checker = ft_calloc(sizeof(t_chk), 1);
 	ft_assert(checker, "Checker malloc error!", data);
-	ft_assert(!check_elements(data, checker), "Invalid map elements!", data);
-	ft_assert(!check_walls(data, checker), "Invalid map walls!", data);
-	ft_assert(!check_path(data, checker), "Invalid path!", data);
-    return (1);
+	ft_assert(check_valid_elements(data, checker),
+		"Invalid map elements!", data);
+	ft_assert(check_valid_walls(data, checker), "Invalid map walls!", data);
+	ft_assert(check_path(data), "Invalid path!", data);
+	return (1);
 }
 
-static void is_rectangle(t_data *data)
+static void	is_rectangle(t_data *data)
 {
 	int	width;
 	int	height;
 	int	i;
-	
+
 	width = data->map_width;
 	height = 0;
 	i = 0;
@@ -51,7 +52,7 @@ static void is_rectangle(t_data *data)
 	}
 }
 
-static int check_elements(t_data *data, t_chk *checker)
+static int	check_valid_elements(t_data *data, t_chk *checker)
 {
 	checker->i = -1;
 	while (data->map[++checker->i])
@@ -74,11 +75,11 @@ static int check_elements(t_data *data, t_chk *checker)
 	return (free(checker), 1);
 }
 
-static int check_walls(t_data *data, t_chk *checker)
+static int	check_valid_walls(t_data *data, t_chk *checker)
 {
 	checker->i = 0;
 	checker->j = 0;
-	while(data->map[checker->i][checker->j] != '\n')
+	while (data->map[checker->i][checker->j] != '\n')
 		if (data->map[checker->i][checker->j++] != '1')
 			return (0);
 	checker->j = 0;
@@ -97,18 +98,18 @@ static int check_walls(t_data *data, t_chk *checker)
 	return (1);
 }
 
-static int check_path(t_data *data, t_chk *checker)
+static int	check_path(t_data *data)
 {
-	get_player_loc(data);
-	find_path(data, data->pl_x, data->pl_y);
+	get_map_elements(data);
+	check_map_movements(data, data->pos.x, data->pos.y);
 	if (data->coll_chk != data->coll)
 	{
-		ft_putendl_fd("Collectible error!", stderr);
+		ft_putendl_fd("Collectible error!", STDERR_FILENO);
 		return (0);
 	}
 	if (!data->is_error)
 	{
-		ft_putendl_fd("Exit error!", stderr);
+		ft_putendl_fd("Exit error!", STDERR_FILENO);
 		return (0);
 	}
 	return (1);
